@@ -1,0 +1,111 @@
+import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
+
+const Portfolio = () => {
+  const projects = [
+    {
+      title: 'TechFlow Solutions',
+      category: 'Brand Identity & Website',
+      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Complete digital transformation for a tech startup'
+    },
+    {
+      title: 'Bloom Beauty',
+      category: 'Social Media & Branding',
+      image: 'https://images.pexels.com/photos/3965548/pexels-photo-3965548.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Beauty brand social media management and growth'
+    },
+    {
+      title: 'Urban Fitness',
+      category: 'Website & Digital Strategy',
+      image: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Fitness center digital presence optimization'
+    },
+    {
+      title: 'Green Earth Co.',
+      category: 'Logo & Brand Guidelines',
+      image: 'https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Sustainable brand identity design'
+    },
+    {
+      title: 'Digital Nomad Hub',
+      category: 'Full Digital Package',
+      image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Co-working space complete branding solution'
+    },
+    {
+      title: 'Artisan Coffee',
+      category: 'Social Media Strategy',
+      image: 'https://images.pexels.com/photos/302904/pexels-photo-302904.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Local coffee shop brand awareness campaign'
+    }
+  ];
+
+  return (
+    <section id="portfolio" className="py-24 bg-gradient-to-b from-black to-gray-900">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Our <span className="bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent">Portfolio</span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            Discover how we've helped brands achieve their digital goals
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.03, y: -2 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="group relative bg-gray-800/40 backdrop-blur-sm z-10 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-pink-500/30 transition-all duration-200 ease-in-out h-80 will-change-transform"
+            >
+              <div className="absolute inset-0">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
+              </div>
+
+              <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end z-10">
+                <div className="text-sm text-pink-400 mb-2 font-medium">
+                  {project.category}
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+                  {project.description}
+                </p>
+                <motion.a
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  href="#"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-pink-400 hover:text-pink-300 transition-all duration-200 ease-in-out w-fit"
+                >
+                  <span className="text-sm font-medium">View Project</span>
+                  <ExternalLink size={16} />
+                </motion.a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Portfolio;
