@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, Phone } from 'lucide-react';
+import { toast } from 'react-toastify';
+import { sendEmail } from '../utils/sendEmail';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,9 +19,22 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+
+    try {
+      await sendEmail(formData);
+      toast.success('Message sent successfully!');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      toast.error('Failed to send message. Please try again.');
+    }
   };
 
   return (
@@ -119,7 +134,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-gray-400 text-sm">Email</p>
-                      <p className="text-white font-medium">hello@smmezy.com</p>
+                      <p className="text-white font-medium">yoursmmezy@gmail.com</p>
                     </div>
                   </div>
 
@@ -129,7 +144,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-gray-400 text-sm">Phone</p>
-                      <p className="text-white font-medium">+1 (555) 123-4567</p>
+                      <p className="text-white font-medium">+91 7482815533</p>
                     </div>
                   </div>
                 </div>
