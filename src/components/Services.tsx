@@ -49,10 +49,14 @@ const Services = () => {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.03, y: -4 }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="bg-gray-800/40 backdrop-blur-sm z-10 rounded-2xl p-6 md:p-8 border border-gray-700/50 hover:border-purple-500/30 transition-all duration-300 ease-in-out h-80 flex flex-col will-change-transform"
+              whileHover={{
+                scale: 1.015,
+                y: -3,
+                transition: { duration: 0.15, ease: 'easeInOut' }
+              }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+              className="bg-gray-800/40 backdrop-blur-sm z-10 rounded-2xl p-6 md:p-8 border border-gray-700/50 hover:border-purple-500/50 shadow-none hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] text-center h-80 flex flex-col"
             >
               <div className="text-purple-400 mb-6 flex justify-center">
                 {service.icon}

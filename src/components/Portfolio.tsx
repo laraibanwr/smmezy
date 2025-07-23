@@ -65,10 +65,9 @@ const Portfolio = () => {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.03, y: -2 }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="group relative bg-gray-800/40 backdrop-blur-sm z-10 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-pink-500/30 transition-all duration-200 ease-in-out h-80 will-change-transform"
+              className="group relative bg-gray-800/40 backdrop-blur-sm z-10 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-pink-400/70 hover:shadow-[0_0_16px_rgba(244,114,182,0.35)] transition-all duration-300 ease-in-out h-80"
             >
               <div className="absolute inset-0">
                 <img 
