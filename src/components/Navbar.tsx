@@ -25,13 +25,18 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
+            {/* Logo */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl font-bold text-white"
+              className="flex items-center space-x-2"
             >
-              Smmezy
+              <img
+                src="/logo.png"
+                alt="Smmezy Logo"
+                className="h-8 w-auto"
+              />
             </motion.div>
 
             {/* Desktop Navigation */}

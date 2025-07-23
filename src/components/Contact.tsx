@@ -22,6 +22,12 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error('Please enter a valid email address.');
+      return;
+    }
+
     try {
       await sendEmail(formData);
       toast.success('Message sent successfully!');
@@ -128,25 +134,35 @@ const Contact = () => {
               <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
               <div className="space-y-6">
                 <div className="flex flex-col md:flex-row md:items-start md:space-x-8 space-y-4 md:space-y-0">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center">
+                  
+                  {/* Email Link */}
+                  <a
+                    href="mailto:yoursmmezy@gmail.com"
+                    className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer"
+                  >
+                    <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition duration-200">
                       <Mail className="w-6 h-6 text-orange-400" />
                     </div>
                     <div>
                       <p className="text-gray-400 text-sm">Email</p>
-                      <p className="text-white font-medium">yoursmmezy@gmail.com</p>
+                      <p className="text-white font-medium group-hover:text-orange-400 transition duration-200">yoursmmezy@gmail.com</p>
                     </div>
-                  </div>
+                  </a>
 
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center">
+                  {/* Phone Link */}
+                  <a
+                    href="tel:+917482815533"
+                    className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer"
+                  >
+                    <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition duration-200">
                       <Phone className="w-6 h-6 text-orange-400" />
                     </div>
                     <div>
                       <p className="text-gray-400 text-sm">Phone</p>
-                      <p className="text-white font-medium">+91 7482815533</p>
+                      <p className="text-white font-medium group-hover:text-orange-400 transition duration-200">+91 7482815533</p>
                     </div>
-                  </div>
+                  </a>
+
                 </div>
               </div>
             </div>
