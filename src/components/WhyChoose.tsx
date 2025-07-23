@@ -5,13 +5,13 @@ const WhyChoose = () => {
   const stats = [
     {
       icon: <Users className="w-10 h-10" />,
-      number: '150+',
+      number: '13+',
       label: 'Brands Elevated',
       description: 'Successful transformations',
     },
     {
       icon: <Target className="w-10 h-10" />,
-      number: '10+',
+      number: '5+',
       label: 'Industries Served',
       description: 'Diverse market expertise',
     },
@@ -23,7 +23,7 @@ const WhyChoose = () => {
     },
     {
       icon: <Clock className="w-10 h-10" />,
-      number: '5+',
+      number: '2+',
       label: 'Years Experience',
       description: 'Proven track record',
     },
