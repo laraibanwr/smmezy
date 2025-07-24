@@ -4,12 +4,12 @@ import { ExternalLink } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 // Import local images
-import Project1 from '../assets/project1.jpg';
-import Project2 from '../assets/project2.jpg';
-import Project3 from '../assets/project3.jpg';
-import Project4 from '../assets/project4.jpg';
-import Project5 from '../assets/project5.jpg';
-import Project6 from '../assets/project6.jpg';
+import Project1 from '../assets/project/project1.jpg';
+import Project2 from '../assets/project/project2.jpg';
+import Project3 from '../assets/project/project3.jpg';
+import Project4 from '../assets/project/project4.jpg';
+import Project5 from '../assets/project/project5.jpg';
+import Project6 from '../assets/project/project6.jpg';
 
 const Portfolio = () => {
   const location = useLocation();
@@ -23,46 +23,46 @@ const Portfolio = () => {
 
   const projects = [
     {
-      id: 'techflow-solutions',
-      title: 'TechFlow Solutions',
+      id: 'project1',
+      title: 'Kunooz Farms India',
       category: 'Brand Identity & Website',
       image: Project1,
-      description: 'Complete digital transformation for a tech startup'
+      description: 'Identity, packaging, and website for a honey brand'
     },
     {
-      id: 'bloom-beauty',
-      title: 'Bloom Beauty',
+      id: 'project2',
+      title: 'FirstCry Preschool',
       category: 'Social Media & Branding',
       image: Project2,
-      description: 'Beauty brand social media management and growth'
+      description: 'Vibrant Instagram posts for preschool branding'
     },
     {
-      id: 'urban-fitness',
-      title: 'Urban Fitness',
-      category: 'Website & Digital Strategy',
+      id: 'project3',
+      title: 'Marwadi Mahila Samiti',
+      category: 'Event & Social Campaigns',
       image: Project3,
-      description: 'Fitness center digital presence optimization'
+      description: 'Social media visuals for cultural events'
     },
     {
-      id: 'green-earth-co',
-      title: 'Green Earth Co.',
-      category: 'Logo & Brand Guidelines',
+      id: 'project4',
+      title: 'PwC India – AC',
+      category: 'Internal Comms Design',
       image: Project4,
-      description: 'Sustainable brand identity design'
+      description: 'Digital creatives for cultural and corporate events'
     },
     {
-      id: 'digital-nomad-hub',
-      title: 'Digital Nomad Hub',
-      category: 'Full Digital Package',
+      id: 'project5',
+      title: 'Aakarshan Home Plus',
+      category: 'Festive Branding',
       image: Project5,
-      description: 'Co-working space complete branding solution'
+      description: 'Elegant festive visuals for interior design promotions'
     },
     {
-      id: 'artisan-coffee',
-      title: 'Artisan Coffee',
-      category: 'Social Media Strategy',
+      id: 'project6',
+      title: 'Barzen',
+      category: 'Branding & Creatives',
       image: Project6,
-      description: 'Local coffee shop brand awareness campaign'
+      description: 'Logo, packaging, and Instagram for a food brand'
     }
   ];
 

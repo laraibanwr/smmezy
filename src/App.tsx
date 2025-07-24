@@ -14,10 +14,28 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const location = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    const shouldScrollToTop =
+      !location.pathname.startsWith('/project') ||
+      location.state?.fromProjectDetail !== true;
+
+    if (shouldScrollToTop) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Scroll to section if state.scrollTo exists
+    if (location.pathname === '/' && location.state?.scrollTo) {
+      const element = document.querySelector(location.state.scrollTo);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
+  }, [location]);
+
   return null;
 }
 

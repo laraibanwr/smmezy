@@ -15,12 +15,12 @@ const Services = () => {
     },
     {
       icon: <Palette className="w-12 h-12" />,
-      title: 'Logo & Brand Identity',
+      title: 'Logo, Packaging & Brand Identity',
       description: 'Comprehensive brand identity design that captures your essence and resonates perfectly with your target audience.'
     },
     {
       icon: <TrendingUp className="w-12 h-12" />,
-      title: 'Digital Brand Solutions',
+      title: 'Innovative Brand Solutions',
       description: 'Complete digital transformation services to establish and grow your brand presence across all digital channels.'
     }
   ];

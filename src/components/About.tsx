@@ -50,14 +50,13 @@ const About = () => {
               <div className="bg-gray-800/60 backdrop-blur rounded-xl p-6 border border-gray-700/50">
                 <h4 className="text-xl font-semibold text-white mb-3">Our Mission</h4>
                 <p className="text-gray-400">
-                  To elevate brands through creative digital solutions that inspire, engage, and
-                  convert.
+                  To empower businesses with impactful content and strong branding that drives growth.
                 </p>
               </div>
               <div className="bg-gray-800/60 backdrop-blur rounded-xl p-6 border border-gray-700/50">
                 <h4 className="text-xl font-semibold text-white mb-3">Our Vision</h4>
                 <p className="text-gray-400">
-                  To be the catalyst that transforms ideas into impactful digital experiences.
+                  To lead in branding and social media by empowering growth through storytelling.
                 </p>
               </div>
             </div>

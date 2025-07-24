@@ -2,44 +2,54 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
+import Testimonial1 from '../assets/testimonial/Testimonial1.png';
+import Testimonial2 from '../assets/testimonial/Testimonial2.png';
+import Testimonial3 from '../assets/testimonial/Testimonial3.png';
+import Testimonial4 from '../assets/testimonial/Testimonial4.png';
+import Testimonial5 from '../assets/testimonial/Testimonial5.png';
+
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
-      position: 'CEO, TechFlow Solutions',
-      image:
-        'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Yash Suryansh',
+      position: 'Founder, Smridhi Iron Company',
+      image: Testimonial1,
       quote:
-        'Smmezy transformed our brand completely. Their creative approach and attention to detail exceeded our expectations.',
+        'Smmezy’s drone shoot captured our sponge iron factory with stunning clarity and precision. Their team was professional, creative, and delivered high-quality footage that impressed everyone.',
       rating: 5
     },
     {
-      name: 'Michael Chen',
-      position: 'Founder, Urban Fitness',
-      image:
-        'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Urwashi',
+      position: 'Dubai, Marketing Exec.',
+      image: Testimonial2,
       quote:
-        'The team delivered exceptional results. Our online presence has never been stronger, and our engagement rates doubled.',
+        'With Smmezy managing our social media, we’ve seen a real boost in engagement and consistency. Their creative strategies and timely execution make them a go-to team for digital presence.',
       rating: 5
     },
     {
-      name: 'Emily Rodriguez',
-      position: 'Marketing Director, Bloom Beauty',
-      image:
-        'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Manoj',
+      position: 'Founder, Shopee House',
+      image: Testimonial3,
       quote:
-        'Professional, creative, and results-driven. Smmezy helped us reach our target audience in ways we never imagined.',
+        'With Smmezy managing our social media, we’ve seen a real boost in engagement and consistency. Their creative strategies and timely execution make them a go-to team for digital presence.',
       rating: 5
     },
     {
-      name: 'David Thompson',
-      position: 'Founder, Green Earth Co.',
-      image:
-        'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Irfan Faisal Sheikh',
+      position: 'Founder, AR Enterprises',
+      image: Testimonial4,
       quote:
-        'Outstanding service and creativity. They understood our vision and brought it to life beyond our expectations.',
+        'We wanted a clean, impactful landing page and Smmezy delivered just that. From design to functionality, everything was on point and the process was super smooth.',
+      rating: 5
+    },
+    {
+      name: 'Md. Ismail',
+      position: 'Buisness Partner, FirstCry',
+      image: Testimonial5,
+      quote:
+        'Smmezy has transformed our preschool’s Instagram with bright, engaging creatives that truly reflect the joy and warmth of our space. Their work connects beautifully with parents and builds trust.',
       rating: 5
     }
   ];

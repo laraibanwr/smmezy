@@ -79,6 +79,11 @@ const Hero = () => {
       {/* Animated Shapes */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {[...Array(totalShapes)].map((_, i) => renderShape(i))}
+
+        {/* Gradient Blur Background Elements */}
+        <div className="absolute top-[10%] left-[5%] w-[300px] h-[300px] bg-purple-500 opacity-20 rounded-full filter blur-[120px] z-0" />
+        <div className="absolute bottom-[10%] right-[10%] w-[250px] h-[250px] bg-pink-500 opacity-20 rounded-full filter blur-[100px] z-0" />
+        <div className="absolute top-[30%] right-[25%] w-[200px] h-[200px] bg-blue-500 opacity-20 rounded-full filter blur-[100px] z-0" />
       </div>
 
       {/* Hero Text */}
@@ -100,7 +105,7 @@ const Hero = () => {
           >
             <span className="text-white">into Impactful </span>
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-              Content
+              Results
             </span>
           </motion.span>
         </motion.h1>
