@@ -118,23 +118,28 @@ const Hero = () => {
             Boost Your Brand and Elevate Your Online Presence
           </p>
 
+          {/* Buttons with smooth scroll */}
           <div className="mt-20 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <motion.a
-              href="#services"
+            <motion.button
+              onClick={() =>
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+              }
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition duration-300 font-medium shadow-sm"
             >
               View Services
-            </motion.a>
-            <motion.a
-              href="#contact"
+            </motion.button>
+            <motion.button
+              onClick={() =>
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+              }
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-white font-semibold shadow-lg transition duration-300"
             >
               Get in Touch
-            </motion.a>
+            </motion.button>
           </div>
         </motion.div>
       </div>
