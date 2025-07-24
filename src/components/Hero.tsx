@@ -16,71 +16,19 @@ const Hero = () => {
     });
   };
 
-  const x1 = useTransform(mouseX, [-10, 10], [-10, 10]);
-  const y1 = useTransform(mouseY, [-10, 10], [-10, 10]);
-
   useEffect(() => {
     return () => {
       if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
     };
   }, []);
 
-  const totalShapes = 35;
-  const shapes = ['circle', 'square', 'triangle'];
-
-  const renderShape = (i: number) => {
-    const size = Math.floor(Math.random() * 40) + 20;
-    const shape = shapes[Math.floor(Math.random() * shapes.length)];
-
-    const top = `${Math.floor(Math.random() * 100)}%`;
-    const left = `${Math.floor(Math.random() * 100)}%`;
-
-    const commonStyle: any = {
-      top,
-      left,
-      width: size,
-      height: size,
-      x: x1,
-      y: y1,
-      position: 'absolute',
-      willChange: 'transform',
-    };
-
-    if (shape === 'triangle') {
-      return (
-        <motion.div
-          key={`triangle-${i}`}
-          style={{
-            ...commonStyle,
-            clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
-            backgroundColor: 'transparent',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
-        />
-      );
-    }
-
-    const rounded = shape === 'circle' ? 'rounded-full' : 'rounded-none';
-
-    return (
-      <motion.div
-        key={`${shape}-${i}`}
-        style={commonStyle}
-        className={`border border-white/10 ${rounded}`}
-      />
-    );
-  };
-
   return (
     <section
       className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      {/* Animated Shapes */}
+      {/* Gradient Blur Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {[...Array(totalShapes)].map((_, i) => renderShape(i))}
-
-        {/* Gradient Blur Background Elements */}
         <div className="absolute top-[10%] left-[5%] w-[300px] h-[300px] bg-purple-500 opacity-20 rounded-full filter blur-[120px] z-0" />
         <div className="absolute bottom-[10%] right-[10%] w-[250px] h-[250px] bg-pink-500 opacity-20 rounded-full filter blur-[100px] z-0" />
         <div className="absolute top-[30%] right-[25%] w-[200px] h-[200px] bg-blue-500 opacity-20 rounded-full filter blur-[100px] z-0" />
