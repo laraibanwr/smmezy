@@ -1,37 +1,19 @@
-import React, { useEffect, useRef } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const animationFrame = useRef<number | null>(null);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
-    animationFrame.current = requestAnimationFrame(() => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-      mouseX.set((clientX / innerWidth - 0.5) * 20);
-      mouseY.set((clientY / innerHeight - 0.5) * 20);
-    });
-  };
-
-  useEffect(() => {
-    return () => {
-      if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
-    };
-  }, []);
-
   return (
     <section
       className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
-      onMouseMove={handleMouseMove}
     >
-      {/* Gradient Blur Background Elements */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[10%] left-[5%] w-[300px] h-[300px] bg-purple-500 opacity-20 rounded-full filter blur-[120px] z-0" />
-        <div className="absolute bottom-[10%] right-[10%] w-[250px] h-[250px] bg-pink-500 opacity-20 rounded-full filter blur-[100px] z-0" />
-        <div className="absolute top-[30%] right-[25%] w-[200px] h-[200px] bg-blue-500 opacity-20 rounded-full filter blur-[100px] z-0" />
+      {/* Blurred Gradient Background Elements - Hidden on small screens, visible on medium and larger */}
+      <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
+        {/* Purple gradient near top-left of text */}
+        <div className="absolute top-[20%] left-[15%] w-[300px] h-[300px] bg-purple-500 opacity-30 rounded-full filter blur-[120px] z-0" />
+        {/* Blue gradient near bottom-right of text */}
+        <div className="absolute bottom-[20%] right-[15%] w-[250px] h-[250px] bg-blue-500 opacity-30 rounded-full filter blur-[100px] z-0" />
+        {/* Adding a third gradient for more overall color */}
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-pink-500 opacity-20 rounded-full filter blur-[150px] z-0" />
       </div>
 
       {/* Hero Text */}
