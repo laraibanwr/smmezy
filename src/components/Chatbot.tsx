@@ -24,15 +24,20 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
+    if (messagesContainerRef.current) {
+    }
     scrollToBottom();
   }, [messages]);
 
+  // Effect to scroll to bottom when loading state changes
+  useEffect(() => {
+    if (isLoading) {
+      scrollToBottom();
+    }
+  }, [isLoading]);
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
@@ -147,7 +152,14 @@ User question: ${inputText}`;
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
+            <div 
+              ref={messagesContainerRef}
+              className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-500/50 scrollbar-track-gray-800/30 hover:scrollbar-thumb-gray-400/70 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
+              style={{
+                scrollbarWidth: 'thin',
+                scrollbarColor: 'rgba(107, 114, 128, 0.5) rgba(31, 41, 55, 0.3)'
+              }}
+            >
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -275,7 +287,14 @@ User question: ${inputText}`;
             </div>
 
             {/* Mobile Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div 
+              ref={messagesContainerRef}
+              className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-500/50 scrollbar-track-gray-800/30 hover:scrollbar-thumb-gray-400/70 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
+              style={{
+                scrollbarWidth: 'thin',
+                scrollbarColor: 'rgba(107, 114, 128, 0.5) rgba(31, 41, 55, 0.3)'
+              }}
+            >
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
