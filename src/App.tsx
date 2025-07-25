@@ -10,6 +10,7 @@ import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
+import Chatbot from './components/Chatbot';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Chatbot from './components/Chatbot';
@@ -66,6 +67,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <Chatbot />
       <ToastContainer
         position="bottom-center"
         autoClose={4000}
