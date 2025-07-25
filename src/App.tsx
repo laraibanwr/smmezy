@@ -13,6 +13,7 @@ import ProjectDetail from './components/ProjectDetail';
 import Chatbot from './components/Chatbot';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import Chatbot from './components/Chatbot';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -57,6 +58,7 @@ function App() {
                 <WhyChoose />
                 <Portfolio />
                 <Testimonials />
+                <Chatbot />
                 <Contact />
               </>
             }
