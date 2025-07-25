@@ -59,26 +59,25 @@ const Chatbot = () => {
     }
   }, [messages, isOpen, scrollToBottom]);
 
-  // Effect to focus the input field when the chat window opens
-  useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isOpen]);
-
-  // Prevent background scrolling when mobile chat is open
+  // Prevent background scrolling when mobile chat is open, but allow chat content scrolling
   useEffect(() => {
     const handleTouchMove = (e: TouchEvent) => {
       if (isOpen && window.innerWidth < 768) {
+        // Check if the touch event target is inside the mobile messages container
+        if (mobileMessagesContainerRef.current && mobileMessagesContainerRef.current.contains(e.target as Node)) {
+          // If inside the message container, allow default scroll behavior
+          return;
+        }
+        // Otherwise, prevent default to stop background scrolling
         e.preventDefault();
       }
     };
 
     if (isOpen && window.innerWidth < 768) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'; // Hide overall body scrollbar
       document.addEventListener('touchmove', handleTouchMove, { passive: false });
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'auto'; // Restore overall body scrollbar
       document.removeEventListener('touchmove', handleTouchMove);
     }
 
@@ -108,7 +107,8 @@ const Chatbot = () => {
 
     try {
       // Initialize Google Generative AI with API key from environment variables
-      const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+      // Replace with your actual API key or retrieve it securely
+      const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || ""); 
       // Get the generative model (using gemini-2.0-flash as per previous successful curl)
       const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
@@ -153,12 +153,27 @@ Please respond as a helpful, professional, and creative assistant representing S
         },
       ];
 
-  const result = await model.generateContent({ contents: chatHistory });
+      // Call the Gemini API directly using fetch as per instructions
+      const payload = { contents: chatHistory };
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY || ""; // Ensure API key is available
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
 
-      // Extract the response text
-      const response = result.response;
-      const botText = await response.text();
+      const result = await response.json();
+
+      let botText = "I'm sorry, I couldn't get a response right now.";
+      if (result.candidates && result.candidates.length > 0 &&
+          result.candidates[0].content && result.candidates[0].content.parts &&
+          result.candidates[0].content.parts.length > 0) {
+        botText = result.candidates[0].content.parts[0].text;
+      } else {
+        console.error('Unexpected API response structure:', result);
+      }
 
       // Create a new bot message
       const botMessage: Message = {
@@ -193,7 +208,7 @@ Please respond as a helpful, professional, and creative assistant representing S
     }
   };
 
-  return (
+    return (
     <>
       {/* Floating Chat Button */}
       <motion.button
@@ -359,13 +374,13 @@ Please respond as a helpful, professional, and creative assistant representing S
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '100%' }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="fixed top-20 bottom-10 left-4 right-4 z-50 flex flex-col overflow-hidden rounded-3xl md:hidden"
+            className="fixed top-20 bottom-4 left-4 right-4 z-50 flex flex-col overflow-hidden rounded-3xl md:hidden"
             style={{
-              background: 'linear-gradient(135deg, rgba(30,30,50,0.85) 0%, rgba(20,20,40,0.95) 100%)',
-              backdropFilter: 'blur(20px)',
+              // Frosted glass effect for mobile
+              boxShadow: '0 10px 25px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1)',
+              background: 'linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
               WebkitBackdropFilter: 'blur(20px)',
-              boxShadow: '0 15px 35px rgba(0,0,0,0.25)',
-              border: '1px solid rgba(255,255,255,0.15)',
+              backdropFilter: 'blur(20px)',
             }}
           >
             {/* Mobile Header */}
