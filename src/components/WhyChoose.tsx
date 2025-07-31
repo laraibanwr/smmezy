@@ -1,0 +1,162 @@
+import { motion } from 'framer-motion';
+import { Users, Award, Clock, Target, Rocket, Zap, TrendingUp } from 'lucide-react';
+
+// Combined component for "Why Choose" and "Our Feats"
+const WhyChoose = () => {
+  const stats = [
+    {
+      icon: <Users className="w-10 h-10" />,
+      number: '13+',
+      label: 'Brands Elevated',
+      description: 'Successful transformations',
+    },
+    {
+      icon: <Target className="w-10 h-10" />,
+      number: '5+',
+      label: 'Industries Served',
+      description: 'Diverse market expertise',
+    },
+    {
+      icon: <Award className="w-10 h-10" />,
+      number: '95%',
+      label: 'Client Satisfaction',
+      description: 'Exceptional results',
+    },
+    {
+      icon: <Clock className="w-10 h-10" />,
+      number: '2+',
+      label: 'Years Experience',
+      description: 'Proven track record',
+    },
+  ];
+
+  const feats = [
+    {
+      icon: <Zap className="w-8 h-8" />,
+      title: 'Rapid Website Delivery',
+      description: 'Launched a complex, bespoke website for a tech startup in just 7 days, enabling a rapid market entry.',
+      highlight: '7 Days',
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: 'Boosted Company Reach',
+      description: 'Increased a client\'s social media engagement by 400% and doubled their organic traffic in three months.',
+      highlight: '400%',
+    },
+    {
+      icon: <Rocket className="w-8 h-8" />,
+      title: 'Successful Product Launch',
+      description: 'Orchestrated a product launch that generated over 10,000 pre-orders through a targeted digital campaign.',
+      highlight: '10k+',
+    },
+  ];
+
+  return (
+    <section className="py-24 bg-gradient-to-b from-black to-gray-900 text-white font-sans">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* --- Why Choose Us Section --- */}
+        <div id="why-choose" className="scroll-mt-24" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Why Choose{' '}
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Smmezy
+            </span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            We deliver results that matter with proven expertise and dedication
+          </p>
+        </motion.div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
+              viewport={{ once: true }}
+              whileHover={{
+                scale: 1.015,
+                y: -3,
+                transition: { duration: 0.15, ease: 'easeInOut' },
+              }}
+              className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-700/50 hover:border-blue-500/60 shadow-none hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] text-center h-60 flex flex-col justify-center"
+            >
+              <div className="text-blue-400 mb-4 flex justify-center">{stat.icon}</div>
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1 + 0.2,
+                  ease: 'easeOut',
+                }}
+                viewport={{ once: true }}
+                className="text-3xl md:text-4xl font-bold text-white mb-1"
+              >
+                {stat.number}
+              </motion.div>
+              <h3 className="text-base md:text-lg font-semibold text-gray-100 mb-1">
+                {stat.label}
+              </h3>
+              <p className="text-gray-400 text-sm">{stat.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* --- Our Feats Sub-section --- */}
+        <div className="mt-24">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+            >
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Our{' '}
+                <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">
+                    Feats
+                </span>
+                </h3>
+                <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                Tangible results that showcase our commitment and skill.
+                </p>
+            </motion.div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {feats.map((feat, index) => (
+                <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.15, ease: 'easeOut' }}
+                    viewport={{ once: true }}
+                    className="bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl p-8 border border-gray-700/60 relative overflow-hidden group"
+                >
+                    <div className="absolute -top-2 -right-2 text-[10rem] font-bold text-gray-500/10 group-hover:text-orange-400/20 transition-colors duration-300" style={{ lineHeight: 1 }}>
+                    {index + 1}
+                    </div>
+                    <div className="relative z-10">
+                    <div className="bg-orange-500/10 text-orange-400 rounded-xl w-14 h-14 flex items-center justify-center mb-6 border border-orange-500/20">
+                        {feat.icon}
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-3">{feat.title}</h4>
+                    <p className="text-gray-400 leading-relaxed">{feat.description}</p>
+                    </div>
+                </motion.div>
+                ))}
+            </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// The main export is now the single, combined component.
+export default WhyChoose;
