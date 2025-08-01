@@ -7,43 +7,120 @@
     <title>Digital Branding & Content Strategy | Smmezy</title>
     <meta name="description" content="Smmezy boosts your brand online with strategic digital marketing, content creation, and brand visibility campaigns." />
     <meta name="keywords" content="digital marketing, branding, content creation, social media, Smmezy" />
-    <link rel="icon" href="/assets/logo.svg" />
     <meta property="og:title" content="Digital Branding & Content Strategy | Smmezy" />
     <meta property="og:description" content="Smmezy builds digital-first brands with compelling content and performance-driven marketing." />
-    <meta property="og:image" content="/assets/og-image.png" />
     <meta property="og:url" content="https://smmezy.com/blog/digital-branding.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Digital Branding & Content Strategy | Smmezy" />
     <meta name="twitter:description" content="Smmezy's digital marketing services help brands grow faster with powerful messaging and social strategies." />
-    <meta name="twitter:image" content="/assets/og-image.png" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <script>
-      fetch("/shared/navbar.html").then(r => r.text()).then(html => {
-        document.querySelector("body").insertAdjacentHTML("afterbegin", html);
-      });
-      fetch("/shared/footer.html").then(r => r.text()).then(html => {
-        document.querySelector("body").insertAdjacentHTML("beforeend", html);
-      });
-    </script>
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="48x48"/>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to bottom, #1f2937, #000000);
+        color: white;
+        min-height: 100vh;
+      }
+
+      main {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 4rem 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+        color: #d1d5db;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        color: #d1d5db;
+      }
+
+      ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .section {
+        margin-top: 3rem;
+      }
+
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
-  <body class="bg-gradient-to-b from-gray-900 to-black text-white min-h-screen">
-    <main class="max-w-4xl mx-auto px-4 py-16 space-y-6">
-      <h1 class="text-4xl font-bold">Digital Branding & Creative Content</h1>
-      <p class="text-lg text-gray-300">
+  <body>
+    <main>
+      <h1>Digital Branding & Creative Content</h1>
+      <p>
         We help brands speak louder online. From scroll-stopping creatives to powerful campaigns, Smmezy crafts
-        content that resonates and converts.
+        content that resonates and converts. In today’s crowded digital landscape, visibility isn’t enough — your brand must *connect*.
       </p>
-      <h2 class="text-2xl font-semibold">Our Offerings:</h2>
-      <ul class="list-disc list-inside text-gray-300 space-y-1">
+
+      <h2>Our Offerings:</h2>
+      <ul>
         <li>Social media management & ad creatives</li>
         <li>Content calendars and brand voice strategy</li>
         <li>Product photography, reels, and copywriting</li>
         <li>Influencer and community engagement</li>
+        <li>Email marketing and newsletters</li>
+        <li>SEO-focused blog writing & micro-content</li>
       </ul>
-      <h2 class="text-2xl font-semibold mt-8">What Sets Us Apart?</h2>
-      <p class="text-gray-300">
+
+      <h2 class="section">What Sets Us Apart?</h2>
+      <p>
         Our team understands trends, platforms, and the psychology of digital interaction. Smmezy turns
-        everyday posts into business growth tools.
+        everyday posts into business growth tools. We’re not just designers and writers — we’re digital storytellers who know how to convert attention into loyalty.
+      </p>
+      <p>
+        With real-time analytics and iterative feedback, we ensure every piece of content performs with purpose. Whether you're launching a product or nurturing a community, Smmezy crafts the narrative your audience craves.
+      </p>
+
+      <h2 class="section">Success Stories</h2>
+      <p>
+        We've helped startups become cult brands and small businesses become local legends. One of our recent clients grew their Instagram following by 300% and tripled their monthly engagement — all within three months of content partnership.
+      </p>
+      <p>
+        Another e-commerce brand saw a 27% increase in conversions after a tailored video-first ad campaign. Results like these aren’t accidents — they’re the product of smart strategy and creative execution.
+      </p>
+
+      <h2 class="section">Let’s Build Your Brand Together</h2>
+      <p>
+        Whether you're starting fresh or scaling up, Smmezy is your creative ally. We help you define your voice, elevate your visual identity, and consistently connect with your audience.
+      </p>
+      <p>
+        Ready to grow online? Reach out to us at <a href="mailto:yoursmmezy@gmail.com" style="color:#3b82f6;">hello@smmezy.com</a> and let’s create something unforgettable.
       </p>
     </main>
   </body>

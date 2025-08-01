@@ -7,43 +7,124 @@
     <title>Website Design & Development | Smmezy</title>
     <meta name="description" content="Smmezy builds responsive, high-converting websites tailored for your brand. Discover our web design and development services." />
     <meta name="keywords" content="website design, web development, responsive websites, SEO, Smmezy" />
-    <link rel="icon" href="/assets/logo.svg" />
     <meta property="og:title" content="Website Design & Development | Smmezy" />
     <meta property="og:description" content="Modern websites built for performance. Smmezy creates pixel-perfect web experiences." />
-    <meta property="og:image" content="/assets/og-image.png" />
     <meta property="og:url" content="https://smmezy.com/blog/website-design.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Website Design & Development | Smmezy" />
     <meta name="twitter:description" content="Website design services by Smmezy. Optimized for speed, SEO, and conversions." />
-    <meta name="twitter:image" content="/assets/og-image.png" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <script>
-      fetch("/shared/navbar.html").then(r => r.text()).then(html => {
-        document.querySelector("body").insertAdjacentHTML("afterbegin", html);
-      });
-      fetch("/shared/footer.html").then(r => r.text()).then(html => {
-        document.querySelector("body").insertAdjacentHTML("beforeend", html);
-      });
-    </script>
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="48x48"/>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to bottom, #1f2937, #000000);
+        color: #ffffff;
+        min-height: 100vh;
+      }
+
+      main {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 4rem 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+        color: #d1d5db;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        color: #d1d5db;
+        line-height: 1.6;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
-  <body class="bg-gradient-to-b from-gray-900 to-black text-white min-h-screen">
-    <main class="max-w-4xl mx-auto px-4 py-16 space-y-6">
-      <h1 class="text-4xl font-bold">Website Design & Development</h1>
-      <p class="text-lg text-gray-300">
+  <body>
+    <main>
+      <h1>Website Design & Development</h1>
+      <p>
         Your website is your digital storefront. At Smmezy, we design and develop stunning, responsive
-        websites that captivate users and drive results.
+        websites that captivate users and drive results. Whether you need a landing page, a product showcase, or a full-scale business platform — we build it with precision.
       </p>
-      <h2 class="text-2xl font-semibold">What We Deliver:</h2>
-      <ul class="list-disc list-inside text-gray-300 space-y-1">
+
+      <h2>What We Deliver:</h2>
+      <ul>
         <li>Custom website design with modern UI/UX</li>
         <li>Responsive development for all devices</li>
         <li>SEO-friendly structure and performance optimization</li>
         <li>CMS or static sites — tailored to your needs</li>
+        <li>Lightning-fast load speeds & optimized assets</li>
+        <li>Clean, scalable code for future updates</li>
       </ul>
-      <h2 class="text-2xl font-semibold mt-8">Why Smmezy?</h2>
-      <p class="text-gray-300">
+
+      <h2>Why Smmezy?</h2>
+      <p>
         We combine design, speed, and strategy. From concept to launch, our team ensures your website is not
-        only beautiful but also functional and user-focused.
+        only beautiful but also functional and user-focused. We use cutting-edge frameworks, thoughtful layouts, and conversion-focused design to deliver measurable impact.
+      </p>
+
+      <p>
+        Unlike cookie-cutter agencies, we dive deep into your goals, audience, and branding to build a web experience that feels unique and drives engagement.
+      </p>
+
+      <h2>Our Process</h2>
+      <p>
+        From wireframes and prototypes to full deployment, our process is collaborative and agile. We involve you every step of the way to ensure your website reflects your brand — and your vision.
+      </p>
+      <ul>
+        <li>Discovery & Requirement Analysis</li>
+        <li>Wireframing and UX flow planning</li>
+        <li>Custom UI design and brand integration</li>
+        <li>Frontend & Backend development</li>
+        <li>QA testing, SEO audit, and go-live</li>
+      </ul>
+
+      <h2>Launch with Confidence</h2>
+      <p>
+        Every website we deliver is tested across devices, browsers, and screen sizes. We also offer post-launch support, analytics setup, and training so you can manage your site independently.
+      </p>
+
+      <p>
+        Let’s build a website that works as hard as you do. Get in touch at 
+        <a href="mailto:hello@smmezy.com" style="color:#3b82f6;">yoursmmezy@gmail.com</a> — we’re excited to make your digital vision real.
       </p>
     </main>
   </body>

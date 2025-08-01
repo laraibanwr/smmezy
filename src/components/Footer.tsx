@@ -22,9 +22,9 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Center: Quick Links and Founders */}
+          {/* Center: Blogs and Founders */}
           <div className="flex flex-col max-[820px]:flex-col lg:flex-row justify-center gap-16 lg:gap-24 flex-1">
-            {/* Quick Links */}
+            {/* Blogs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -32,11 +32,32 @@ const Footer = () => {
               viewport={{ once: true }}
               className="max-[820px]:text-center"
             >
-              <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">Blogs</h4>
               <div className="space-y-2">
-                <a href="#services" className="block text-gray-400 hover:text-white transition-colors">Services</a>
-                <a href="#portfolio" className="block text-gray-400 hover:text-white transition-colors">Portfolio</a>
-                <a href="#contact" className="block text-gray-400 hover:text-white transition-colors">Contact</a>
+                <a
+                  href="/blog/digital-branding.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-gray-400 hover:text-white transition-colors"
+                >
+                  Digital Branding
+                </a>
+                <a
+                  href="/blog/website-design.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-gray-400 hover:text-white transition-colors"
+                >
+                  Website Design
+                </a>
+                <a
+                  href="/blog/logo-design.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-gray-400 hover:text-white transition-colors"
+                >
+                  Logo Design
+                </a>
               </div>
             </motion.div>
 
