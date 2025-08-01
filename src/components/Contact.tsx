@@ -2,27 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, Phone, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-// A simple toast notification component to avoid external dependencies
-const Toast = ({ message, type, onClose }) => {
-  if (!message) return null;
-
-  const baseClasses = "fixed top-5 right-5 p-4 rounded-lg shadow-lg text-white flex items-center z-50";
-  const typeClasses = {
-    success: "bg-green-500",
-    error: "bg-red-500",
-  };
-
-  setTimeout(onClose, 3000); // Auto-close after 3 seconds
-
-  return (
-    <div className={`${baseClasses} ${typeClasses[type]}`}>
-      <span>{message}</span>
-      <button onClick={onClose} className="ml-4 text-xl font-bold">&times;</button>
-    </div>
-  );
-};
-
+import { sendEmail } from '../utils/sendEmail'; // adjust path if needed
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -31,25 +13,6 @@ const Contact = () => {
     phone: '',
     message: ''
   });
-
-  const [toast, setToast] = useState({ message: '', type: '' });
-
-  // Mock function to simulate sending an email
-  const sendEmail = (data) => {
-    return new Promise((resolve, reject) => {
-      console.log("Sending email with data:", data);
-      // Simulate network delay
-      setTimeout(() => {
-        // Simulate a random success or failure
-        if (Math.random() > 0.1) { // 90% success rate
-          resolve({ success: true });
-        } else {
-          reject(new Error("Failed to send email."));
-        }
-      }, 1000);
-    });
-  };
-
 
   const handleChange = (e) => {
     setFormData({
@@ -60,31 +23,34 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!emailRegex.test(formData.email)) {
-      setToast({ message: 'Please enter a valid email address.', type: 'error' });
+      toast.error('Please enter a valid email address.', {
+        position: 'bottom-center',
+        className: 'rounded-xl',
+      });
       return;
     }
 
     try {
       await sendEmail(formData);
-      setToast({ message: 'Message sent successfully!', type: 'success' });
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
+      toast.success('Message sent successfully!', {
+        position: 'bottom-center',
+        className: 'rounded-xl',
       });
+      setFormData({ name: '', email: '', phone: '', message: '' });
     } catch (error) {
       console.error('Email sending failed:', error);
-      setToast({ message: 'Failed to send message. Please try again.', type: 'error' });
+      toast.error('Failed to send message. Please try again.', {
+        position: 'bottom-center',
+        className: 'rounded-xl',
+      });
     }
   };
 
   return (
     <section id="contact" className="py-24 bg-gradient-to-b from-black to-gray-900 text-white">
-       <Toast message={toast.message} type={toast.type} onClose={() => setToast({ message: '', type: '' })} />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -112,43 +78,16 @@ const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6 flex-grow flex flex-col">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
-                />
+                <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required
+                  className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200" />
+                <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required
+                  className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200" />
+                <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange}
+                  className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200" />
               </div>
 
-              <textarea
-                name="message"
-                placeholder="Tell us about your project..."
-                value={formData.message}
-                onChange={handleChange}
-                rows={5}
-                required
-                className="w-full min-h-[120px] px-4 py-4 bg-gray-800/50 backdrop-blur border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200 resize-none"
-              />
+              <textarea name="message" placeholder="Tell us about your project..." value={formData.message} onChange={handleChange} rows={5} required
+                className="w-full min-h-[120px] px-4 py-4 bg-gray-800/50 backdrop-blur border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200 resize-none" />
 
               <motion.button
                 type="submit"
@@ -174,12 +113,7 @@ const Contact = () => {
             <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur rounded-2xl p-6 md:p-8 border border-gray-700/50">
               <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
               <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-8 space-y-6 sm:space-y-0">
-                
-                {/* Email Link */}
-                <a
-                  href="mailto:yoursmmezy@gmail.com"
-                  className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer"
-                >
+                <a href="mailto:yoursmmezy@gmail.com" className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer">
                   <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition duration-200 flex-shrink-0">
                     <Mail className="w-6 h-6 text-orange-400" />
                   </div>
@@ -189,11 +123,7 @@ const Contact = () => {
                   </div>
                 </a>
 
-                {/* Phone Link */}
-                <a
-                  href="tel:+917482815533"
-                  className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer"
-                >
+                <a href="tel:+917482815533" className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer">
                   <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition duration-200 flex-shrink-0">
                     <Phone className="w-6 h-6 text-orange-400" />
                   </div>
@@ -205,17 +135,12 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* New Grid for "Why Work" and "Schedule" */}
+            {/* Why Work With Us + Book Appointment */}
             <div className="grid md:grid-cols-2 gap-8">
-              {/* Why Work With Us Box */}
               <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur rounded-2xl p-6 md:p-8 border border-gray-700/50">
                 <h3 className="text-lg md:text-xl font-bold text-white mb-4">Why Work With Us?</h3>
                 <ul className="space-y-3 text-gray-300">
-                  {[
-                    "Fast Response",
-                    "Free Consultation",
-                    "Customized Solutions"
-                  ].map((text, i) => (
+                  {["Fast Response", "Free Consultation", "Customized Solutions"].map((text, i) => (
                     <li key={i} className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0" />
                       <span className="text-sm md:text-base">{text}</span>
@@ -224,24 +149,9 @@ const Contact = () => {
                 </ul>
               </div>
 
-              {/* Schedule Appointment Box */}
               <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur rounded-2xl p-6 md:p-8 border border-gray-700/50">
                 <h3 className="text-lg md:text-xl font-bold text-white mb-4">Book Appointment</h3>
-                {/* <a
-                  href="#calendly" // Placeholder for Calendly link
-                  className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer"
-                >
-                  <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition duration-200 flex-shrink-0">
-                    <Calendar className="w-6 h-6 text-orange-400" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">Book a meeting</p>
-                    <p className="text-white font-medium group-hover:text-orange-400 transition duration-200">Find a time</p>
-                  </div>
-                </a> */}
-                <Link
-                  to="/book-appointment"
-                  className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer">
+                <Link to="/book-appointment" className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer">
                   <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition duration-200 flex-shrink-0">
                     <Calendar className="w-6 h-6 text-orange-400" />
                   </div>

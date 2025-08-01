@@ -152,14 +152,6 @@ const ProjectDetail = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-black to-gray-900 min-h-screen px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <Link
-          to="/"
-          state={{ fromProjectDetail: true }}
-          className="text-pink-400 hover:text-pink-300 mb-8 flex items-center space-x-2"
-        >
-          <ArrowLeft size={18} />
-          <span className="text-sm font-medium">Back To Portfolio</span>
-        </Link>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}

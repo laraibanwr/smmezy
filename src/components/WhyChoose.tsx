@@ -34,19 +34,19 @@ const WhyChoose = () => {
     {
       icon: <Zap className="w-8 h-8" />,
       title: 'Rapid Website Delivery',
-      description: 'Launched a complex, bespoke website for a tech startup in just 7 days, enabling a rapid market entry.',
+      description: 'Delivered a fully responsive and brand-aligned website with smart UI/UX for a growing brand in just 7 days.',
       highlight: '7 Days',
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: 'Boosted Company Reach',
-      description: 'Increased a client\'s social media engagement by 400% and doubled their organic traffic in three months.',
+      description: 'Boosted brand reach by 400% using creative content and meme marketing across social platforms.',
       highlight: '400%',
     },
     {
       icon: <Rocket className="w-8 h-8" />,
       title: 'Successful Product Launch',
-      description: 'Orchestrated a product launch that generated over 10,000 pre-orders through a targeted digital campaign.',
+      description: 'Created high-impact content for a brand within 1 hour, enabling quick turnarounds for time-sensitive campaigns.',
       highlight: '10k+',
     },
   ];

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -19,11 +20,12 @@ import Appointment from './pages/Appointment';
 
 function ScrollToTop() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const scrollTo = location.state?.scrollTo;
     const isFromProjectDetail = location.state?.fromProjectDetail === true;
     const isFromAppointment = location.state?.fromAppointment === true;
-    const scrollTo = location.state?.scrollTo;
 
     const shouldScrollToTop =
       !location.pathname.startsWith('/project') &&
@@ -31,37 +33,45 @@ function ScrollToTop() {
       !isFromProjectDetail &&
       !scrollTo;
 
-    // 1. Scroll to top (default)
+    // Scroll to top on general route change
     if (shouldScrollToTop && !location.hash) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 2. Scroll to hash (like #contact)
+    // Scroll to hash (like #contact)
     if (location.hash) {
       const target = document.querySelector(location.hash);
       if (target) {
-        target.scrollIntoView({ behavior: 'auto' });
+        setTimeout(() => {
+          const yOffset = -80;
+          const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 100);
       }
     }
 
-    // 3. Scroll to section passed from navigation (like #about, #services)
+    // Scroll to section passed via state (e.g., { scrollTo: "#services" })
     if (scrollTo) {
       const target = document.querySelector(scrollTo);
       if (target) {
         setTimeout(() => {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }, 300); // wait for the page transition
+          const yOffset = -80;
+          const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 100);
       }
+
+      // Clear the scrollTo state so it doesn't repeat
+      navigate(location.pathname, { replace: true, state: {} });
     }
-  }, [location]);
+  }, [location, navigate]);
 
   return null;
 }
 
-
 function App() {
   return (
-    <div className="bg-black text-white min-h-screen overflow-x-clip selection:bg-purple-500 selection:text-white">
+    <div className="bg-gradient-to-b from-gray-900 to-black text-white min-h-screen overflow-x-clip selection:bg-purple-500 selection:text-white">
       <ScrollToTop />
       <Navbar />
       <main>
@@ -77,7 +87,6 @@ function App() {
                 <Portfolio />
                 <Clients />
                 <Testimonials />
-                <Chatbot />
                 <Contact />
               </>
             }

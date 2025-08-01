@@ -1,0 +1,50 @@
+<!-- File: public/blog/website-design.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Design & Development | Smmezy</title>
+    <meta name="description" content="Smmezy builds responsive, high-converting websites tailored for your brand. Discover our web design and development services." />
+    <meta name="keywords" content="website design, web development, responsive websites, SEO, Smmezy" />
+    <link rel="icon" href="/assets/logo.svg" />
+    <meta property="og:title" content="Website Design & Development | Smmezy" />
+    <meta property="og:description" content="Modern websites built for performance. Smmezy creates pixel-perfect web experiences." />
+    <meta property="og:image" content="/assets/og-image.png" />
+    <meta property="og:url" content="https://smmezy.com/blog/website-design.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Website Design & Development | Smmezy" />
+    <meta name="twitter:description" content="Website design services by Smmezy. Optimized for speed, SEO, and conversions." />
+    <meta name="twitter:image" content="/assets/og-image.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <script>
+      fetch("/shared/navbar.html").then(r => r.text()).then(html => {
+        document.querySelector("body").insertAdjacentHTML("afterbegin", html);
+      });
+      fetch("/shared/footer.html").then(r => r.text()).then(html => {
+        document.querySelector("body").insertAdjacentHTML("beforeend", html);
+      });
+    </script>
+  </head>
+  <body class="bg-gradient-to-b from-gray-900 to-black text-white min-h-screen">
+    <main class="max-w-4xl mx-auto px-4 py-16 space-y-6">
+      <h1 class="text-4xl font-bold">Website Design & Development</h1>
+      <p class="text-lg text-gray-300">
+        Your website is your digital storefront. At Smmezy, we design and develop stunning, responsive
+        websites that captivate users and drive results.
+      </p>
+      <h2 class="text-2xl font-semibold">What We Deliver:</h2>
+      <ul class="list-disc list-inside text-gray-300 space-y-1">
+        <li>Custom website design with modern UI/UX</li>
+        <li>Responsive development for all devices</li>
+        <li>SEO-friendly structure and performance optimization</li>
+        <li>CMS or static sites — tailored to your needs</li>
+      </ul>
+      <h2 class="text-2xl font-semibold mt-8">Why Smmezy?</h2>
+      <p class="text-gray-300">
+        We combine design, speed, and strategy. From concept to launch, our team ensures your website is not
+        only beautiful but also functional and user-focused.
+      </p>
+    </main>
+  </body>
+</html>
