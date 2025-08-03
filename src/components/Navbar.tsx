@@ -5,7 +5,7 @@ import { Menu, X, Volume2 } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 900);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 950);
   const navigate = useNavigate();
   const location = useLocation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -21,7 +21,7 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 900);
+    const handleResize = () => setIsDesktop(window.innerWidth >= 950);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);

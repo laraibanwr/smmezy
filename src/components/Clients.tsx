@@ -21,6 +21,20 @@ const clientData = [
   { name: 'Client 5', logo: Client5, color: 'from-cyan-500/20' },
   { name: 'Client 6', logo: Client6, color: 'from-pink-500/20' },
   { name: 'Client 7', logo: Client7, color: 'from-yellow-500/20' },
+  { name: 'Client 1', logo: Client1, color: 'from-blue-500/20' },
+  { name: 'Client 2', logo: Client2, color: 'from-purple-500/20' },
+  { name: 'Client 3', logo: Client3, color: 'from-green-500/20' },
+  { name: 'Client 4', logo: Client4, color: 'from-red-500/20' },
+  { name: 'Client 5', logo: Client5, color: 'from-cyan-500/20' },
+  { name: 'Client 6', logo: Client6, color: 'from-pink-500/20' },
+  { name: 'Client 7', logo: Client7, color: 'from-yellow-500/20' },
+  { name: 'Client 1', logo: Client1, color: 'from-blue-500/20' },
+  { name: 'Client 2', logo: Client2, color: 'from-purple-500/20' },
+  { name: 'Client 3', logo: Client3, color: 'from-green-500/20' },
+  { name: 'Client 4', logo: Client4, color: 'from-red-500/20' },
+  { name: 'Client 5', logo: Client5, color: 'from-cyan-500/20' },
+  { name: 'Client 6', logo: Client6, color: 'from-pink-500/20' },
+  { name: 'Client 7', logo: Client7, color: 'from-yellow-500/20' },
 ];
 
 const quotes = [
@@ -68,19 +82,15 @@ const Clients = () => {
 
       {/* Conveyor Belt Logo Scroller */}
       <div className="relative w-full overflow-hidden mb-16">
-        <div className="animate-marquee flex w-max gap-10 md:gap-16">
-          {/* We duplicate the clientData array to create a seamless looping effect */}
+        <div className="flex w-max gap-10 md:gap-16 animate-marquee">
           {[...clientData, ...clientData].map((client, idx) => (
             <div
               key={idx}
-              // The circular container for the logo.
-              // A dynamic background gradient is applied here using the 'color' from clientData.
               className={`w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full flex items-center justify-center bg-gradient-to-br ${client.color} to-white/5 backdrop-blur-md border border-white/10 shadow-lg shrink-0`}
             >
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
-                // The logo image size is increased to reduce the padding inside the circle.
                 className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
               />
             </div>

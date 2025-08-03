@@ -19,6 +19,13 @@ const config: Config = {
       },
     },
     extend: {
+      // ✅ Add custom breakpoints
+      screens: {
+        "md": "768px",
+        "lg": "1025px", // 👈 custom 'lg' to start 4-column layout after 1024px
+        "xl": "1280px",
+        "2xl": "1536px",
+      },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
       },

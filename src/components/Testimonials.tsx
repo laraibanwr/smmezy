@@ -109,7 +109,7 @@ const Testimonials = () => {
 
         <div className="relative max-w-6xl mx-auto">
           {/* Desktop View */}
-          <div className="hidden lg:flex justify-center items-center h-[420px] overflow-hidden">
+          <div className="hidden md:flex justify-center items-center overflow-hidden relative w-full h-[420px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`left-${currentIndex}`}
@@ -117,7 +117,7 @@ const Testimonials = () => {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
-                className="w-80 z-10"
+                className="w-80 shrink-0 z-10"
               >
                 <TestimonialCard testimonial={getTestimonialAt(-1)} variant="side" />
               </motion.div>
@@ -128,7 +128,7 @@ const Testimonials = () => {
                 animate={{ x: 0, opacity: 1, scale: 1 }}
                 exit={{ x: 0, opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
-                className="w-96 z-20 mx-6"
+                className="w-96 shrink-0 z-20 mx-6"
               >
                 <TestimonialCard testimonial={getTestimonialAt(0)} variant="center" />
               </motion.div>
@@ -139,7 +139,7 @@ const Testimonials = () => {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
-                className="w-80 z-10"
+                className="w-80 shrink-0 z-10"
               >
                 <TestimonialCard testimonial={getTestimonialAt(1)} variant="side" />
               </motion.div>
@@ -147,7 +147,7 @@ const Testimonials = () => {
           </div>
 
           {/* Mobile View */}
-          <div className="lg:hidden relative flex justify-center items-center h-[420px]">
+          <div className="md:hidden relative flex justify-center items-center h-[420px]">
             <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div
                 key={currentIndex}

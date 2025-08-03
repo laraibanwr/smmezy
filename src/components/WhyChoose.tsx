@@ -110,48 +110,74 @@ const WhyChoose = () => {
           ))}
         </div>
 
-        {/* --- Our Feats Sub-section --- */}
+        {/* --- Our Feats Sub-section - UPDATED LAYOUT --- */}
         <div className="mt-24">
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-            >
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Our{' '}
-                <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">
-                    Feats
-                </span>
-                </h3>
-                <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-                Tangible results that showcase our commitment and skill.
-                </p>
-            </motion.div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {feats.map((feat, index) => (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Our{' '}
+              <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">
+                Feats
+              </span>
+            </h3>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Tangible results that showcase our commitment and skill.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* First two feats in a 2-column grid on medium screens */}
+            <div className="grid md:grid-cols-2 gap-8 md:col-span-2 lg:col-span-2">
+              {feats.slice(0, 2).map((feat, index) => (
                 <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.15, ease: 'easeOut' }}
-                    viewport={{ once: true }}
-                    className="bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl p-8 border border-gray-700/60 relative overflow-hidden group"
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.15, ease: 'easeOut' }}
+                  viewport={{ once: true }}
+                  className="bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl p-8 border border-gray-700/60 relative overflow-hidden group"
                 >
-                    <div className="absolute -top-2 -right-2 text-[10rem] font-bold text-gray-500/10 group-hover:text-orange-400/20 transition-colors duration-300" style={{ lineHeight: 1 }}>
+                  <div className="absolute -top-2 -right-2 text-[10rem] font-bold text-gray-500/10 group-hover:text-orange-400/20 transition-colors duration-300" style={{ lineHeight: 1 }}>
                     {index + 1}
-                    </div>
-                    <div className="relative z-10">
+                  </div>
+                  <div className="relative z-10">
                     <div className="bg-orange-500/10 text-orange-400 rounded-xl w-14 h-14 flex items-center justify-center mb-6 border border-orange-500/20">
-                        {feat.icon}
+                      {feat.icon}
                     </div>
                     <h4 className="text-xl font-bold text-white mb-3">{feat.title}</h4>
                     <p className="text-gray-400 leading-relaxed">{feat.description}</p>
-                    </div>
+                  </div>
                 </motion.div>
-                ))}
+              ))}
             </div>
+            
+            {/* Third feat centered on medium screens */}
+            <motion.div
+              key={2}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl p-8 border border-gray-700/60 relative overflow-hidden group
+                         md:w-[calc(50%-1rem)] md:mx-auto lg:w-full"
+            >
+              <div className="absolute -top-2 -right-2 text-[10rem] font-bold text-gray-500/10 group-hover:text-orange-400/20 transition-colors duration-300" style={{ lineHeight: 1 }}>
+                3
+              </div>
+              <div className="relative z-10">
+                <div className="bg-orange-500/10 text-orange-400 rounded-xl w-14 h-14 flex items-center justify-center mb-6 border border-orange-500/20">
+                  {feats[2].icon}
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3">{feats[2].title}</h4>
+                <p className="text-gray-400 leading-relaxed">{feats[2].description}</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

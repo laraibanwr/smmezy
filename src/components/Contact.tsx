@@ -109,10 +109,10 @@ const Contact = () => {
             viewport={{ once: true }}
             className="space-y-8 h-full flex flex-col"
           >
-            {/* Get in Touch Box */}
+            {/* Get in Touch Box - UPDATED LAYOUT */}
             <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur rounded-2xl p-6 md:p-8 border border-gray-700/50">
               <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
-              <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-8 space-y-6 sm:space-y-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                 <a href="mailto:yoursmmezy@gmail.com" className="flex items-center space-x-4 group transition-colors duration-200 hover:text-orange-400 cursor-pointer">
                   <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition duration-200 flex-shrink-0">
                     <Mail className="w-6 h-6 text-orange-400" />
