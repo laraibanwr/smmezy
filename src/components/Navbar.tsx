@@ -5,7 +5,7 @@ import { Menu, X, Volume2 } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 950);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 900);
   const navigate = useNavigate();
   const location = useLocation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -15,40 +15,26 @@ const Navbar = () => {
     { name: 'Services', href: '#services' },
     { name: 'Why Choose Us', href: '#why-choose' },
     { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Clients', href: '#clients' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' }
   ];
 
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 950);
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 900);
+    };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // ✅ Custom scroll function
-  const smoothScrollTo = (targetId: string) => {
-    const element = document.querySelector(targetId);
-    if (!element) return;
-
-    const yOffset = -80; // adjust based on navbar height
-    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-    window.scrollTo({
-      top: y,
-      behavior: 'smooth'
-    });
-  };
-
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
-    setIsOpen(false);
-
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: href } });
     } else {
-      smoothScrollTo(href);
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsOpen(false);
   };
 
   const handleLogoClick = () => {
@@ -76,7 +62,7 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo & Sound */}
+            {/* Logo and Sound Icon */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -84,12 +70,16 @@ const Navbar = () => {
               className="flex items-center space-x-3 cursor-pointer"
               onClick={handleLogoClick}
             >
-              <img src="/logo.png" alt="Smmezy Logo" className="h-8 w-auto" />
+              <img
+                src="/logo.png"
+                alt="Smmezy Logo"
+                className="h-8 w-auto"
+              />
               <motion.button
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={(e) => {
-                  e.stopPropagation();
+                  e.stopPropagation(); // Prevent logo click
                   handlePlaySound();
                 }}
                 className="text-white hover:text-gray-300 transition-colors duration-200"
@@ -100,7 +90,7 @@ const Navbar = () => {
               <audio ref={audioRef} src="/Pronunciation.mp3" />
             </motion.div>
 
-            {/* Desktop Nav */}
+            {/* Desktop Navigation */}
             {isDesktop && (
               <div className="flex space-x-8">
                 {navItems.map((item, index) => (
@@ -119,7 +109,7 @@ const Navbar = () => {
               </div>
             )}
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Button */}
             {!isDesktop && (
               <button
                 onClick={() => setIsOpen(!isOpen)}

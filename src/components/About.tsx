@@ -21,32 +21,30 @@ const About = () => {
         </motion.div>
 
         {/* Main Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             viewport={{ once: true }}
-            className="flex flex-col justify-between space-y-6"
+            className="space-y-6"
           >
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Empowering Brands Through Creative Excellence
-              </h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Empowering Brands Through Creative Excellence
+            </h3>
 
-              <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                At Smmezy, we believe every brand has a unique story waiting to be told. Our mission
-                is to transform your vision into compelling digital experiences that resonate with
-                your audience and drive meaningful engagement.
-              </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              At Smmezy, we believe every brand has a unique story waiting to be told. Our mission
+              is to transform your vision into compelling digital experiences that resonate with
+              your audience and drive meaningful engagement.
+            </p>
 
-              <p className="text-lg text-gray-300 leading-relaxed">
-                Through strategic creativity, innovative design, and data-driven insights, we help
-                businesses of all sizes establish a powerful online presence that not only looks
-                exceptional but delivers measurable results.
-              </p>
-            </div>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              Through strategic creativity, innovative design, and data-driven insights, we help
+              businesses of all sizes establish a powerful online presence that not only looks
+              exceptional but delivers measurable results.
+            </p>
 
             <div className="grid md:grid-cols-2 gap-6 mt-8">
               <div className="bg-gray-800/60 backdrop-blur rounded-xl p-6 border border-gray-700/50">
@@ -70,9 +68,9 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             viewport={{ once: true }}
-            className="h-full flex"
+            className="relative"
           >
-            <div className="relative bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur rounded-2xl p-6 border border-gray-700/50 flex flex-col items-start gap-6 w-full h-full">
+            <div className="relative bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur rounded-2xl p-6 border border-gray-700/50 flex flex-col items-start gap-6 overflow-visible">
               {/* Animated Background Circles */}
               <div className="absolute inset-0">
                 <motion.div
