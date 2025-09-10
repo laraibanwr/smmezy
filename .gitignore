@@ -7,10 +7,19 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependency directories
 node_modules
+
+# Build output
 dist
 dist-ssr
 *.local
+
+# Bolt AI (generated project config)
+.bolt/
+
+# Optional Vite cache
+.vite
 
 # Editor directories and files
 .vscode/*
@@ -23,8 +32,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# Environment variables
+# Env files
 .env
-.env.*.local
-.env.local
-.env.*    # Covers .env.development, .env.production, etc.

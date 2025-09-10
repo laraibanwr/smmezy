@@ -1,27 +1,40 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import heroVideo from '../assets/hero.mp4';
 
 const Hero = () => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
-      {/* ✅ Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-      >
-        <source src={heroVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Blurred Gradient Background Elements - Now visible on all screen sizes */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Optimized with transform to trigger GPU acceleration */}
+        <div
+          className="absolute top-[20%] left-[15%] w-[300px] h-[300px] bg-purple-500 opacity-30 rounded-full"
+          style={{
+            transform: 'translateZ(0)',
+            filter: 'blur(80px)',
+            willChange: 'transform',
+          }}
+        />
+        <div
+          className="absolute bottom-[20%] right-[15%] w-[250px] h-[250px] bg-blue-500 opacity-30 rounded-full"
+          style={{
+            transform: 'translateZ(0)',
+            filter: 'blur(80px)',
+            willChange: 'transform',
+          }}
+        />
+        <div
+          className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-pink-500 opacity-20 rounded-full"
+          style={{
+            transform: 'translateZ(0)',
+            filter: 'blur(100px)',
+            willChange: 'transform',
+          }}
+        />
+      </div>
 
-      {/* ✅ Overlay to slightly darken the video for better text visibility */}
-      <div className="absolute inset-0 bg-black/60 z-0" />
-
-      {/* ✅ Hero Text */}
+      {/* Hero Text */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-6 py-8">
         <motion.h1
           initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
@@ -54,11 +67,11 @@ const Hero = () => {
           <p className="text-2xl md:text-3xl text-gray-200 font-medium">
             Transforming Your Vision into Digital Success
           </p>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-400 max-w-4xl mx-auto">
             Boost Your Brand and Elevate Your Online Presence
           </p>
 
-          {/* ✅ Buttons */}
+          {/* Buttons with smooth scroll */}
           <div className="mt-20 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <motion.button
               onClick={() =>
@@ -84,7 +97,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* ✅ Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0 }}
         animate={shouldReduceMotion ? {} : { opacity: 1 }}
@@ -94,7 +107,7 @@ const Hero = () => {
         <motion.div
           animate={shouldReduceMotion ? {} : { y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center items-start"
+          className="w-6 h-10 border-2 border-gray-500 rounded-full flex justify-center items-start"
           style={{ willChange: 'transform' }}
         >
           <motion.div

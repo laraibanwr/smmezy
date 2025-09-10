@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    @apply bg-black text-white;
+  @apply bg-black text-white;
 }
 
 /* Chrome, Safari, Edge */
@@ -18,7 +18,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(192, 132, 252, 0.5);
+  background: rgba(192, 132, 252, 0.5); /* purple */
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: background 0.3s;
@@ -27,48 +27,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(192, 132, 252, 0.7);
 }
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-/* Custom Fancy Loader */
-.loader {
-  width: 70px;
-  aspect-ratio: 1;
-  background:
-    radial-gradient(farthest-side, #ff6ec4 90%, #0000) center/16px 16px,
-    radial-gradient(farthest-side, #7366ff 90%, #0000) bottom/12px 12px;
-  background-repeat: no-repeat;
-  animation: l17 1s infinite linear;
-  position: relative;
-}
-
-.loader::before {
-  content: "";
-  position: absolute;
-  width: 8px;
-  aspect-ratio: 1;
-  inset: auto 0 16px;
-  margin: auto;
-  background: #5ee7df;
-  border-radius: 50%;
-  transform-origin: 50% calc(100% + 10px);
-  animation: inherit;
-  animation-duration: 0.5s;
-}
-
-@keyframes l17 {
-  100% {
-    transform: rotate(1turn);
-  }
-}
+  
